@@ -16,14 +16,14 @@ class sources {
 	apt::source { "puppet_hhvm_main" :
 		location		=> "http://dl.hhvm.com/ubuntu",
 		release			=> "precise",
-		repos				=> "main",
+		repos			=> "main",
 		include_src	=> false
 	}
 
 	apt::source { "puppet_ubuntu_archiv_precise_universe" :
 		location		=> "http://archive.ubuntu.com/ubuntu",
 		release			=> "precise",
-		repos				=> "universe",
+		repos			=> "universe",
 		include_src	=> false
 	}
 }

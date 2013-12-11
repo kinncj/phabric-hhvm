@@ -2,15 +2,23 @@ server {
   listen *:80;
   server_name *.vagrant-hhvm.localhost vagrant-hhvm.localhost;
 
+  root      /var/www/phabricator/webroot;
+  try_files $uri $uri/ /index.php;
+
   location / {
-    root /var/www;
-    index  index.html index.php index.htm;
+    index   index.php;
+
+    if ( !-f $request_filename )
+    {
+      rewrite ^/(.*)$ /index.php?__path__=/$1 last;
+      break;
+    }
   }
 
-  location ~ \.php$ {
-  proxy_set_header   X-Real-IP        $remote_addr;
-  proxy_set_header Host www.facebook.com;
-  proxy_pass   http://localhost:8080;
+  location /index.php {
+    proxy_set_header   X-Real-IP        $remote_addr;
+    proxy_set_header Host vagrant-hhvm.localhost;
+    proxy_pass   http://localhost:8080;
   }
 }
 

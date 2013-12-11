@@ -8,7 +8,7 @@ Eval {
 
 Server {
   Port = 8080
-  SourceRoot = /var/www/
+  SourceRoot = /var/www/phabricator/webroot
   DefaultDocument = index.php
 }
 
@@ -30,13 +30,5 @@ Log {
 #include "/usr/share/hhvm/hdf/static.mime-types.hdf"
 
 StaticFile {
-  FilesMatch {
-    * {
-      pattern = .*\.(dll|exe)
-      headers {
-        * = Content-Disposition: attachment
-      }
-    }
-  }
 	Extensions : StaticMimeTypes
 }

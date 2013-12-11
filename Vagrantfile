@@ -2,9 +2,9 @@
 # vi: set ft=ruby :
 
 Vagrant::configure("2") do |config|
-	config.vm.box = "precise64"
+	config.vm.box = "phabricator_hhvm"
 	config.vm.box_url = "http://files.vagrantup.com/precise64.box"
-	config.vm.hostname = "vagrant-hhvm.localhost"
+	config.vm.hostname = "phabricator.localhost"
 	config.ssh.forward_agent = true
 
 	config.vm.network :private_network, ip: "192.168.99.99"
